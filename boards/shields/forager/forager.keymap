@@ -1,9 +1,10 @@
-// Mini-ryoku on Forager (ZMK)
-//
-// Layers:
-//  0 = BASE (Mini-ryoku home layer)
-//  1 = FUN  (Fn / mouse / media)
-//  2 = SYM  (numbers / symbols / nav)
+/* Mini-ryoku on Forager (ZMK)
+ *
+ * Layers:
+ *   0 = BASE
+ *   1 = FUN
+ *   2 = SYM
+ */
 
 #include <behaviors.dtsi>
 #include <behaviors/mouse_keys.dtsi>
@@ -18,140 +19,123 @@
     keymap {
         compatible = "zmk,keymap";
 
-        // ---------- BASE / HOME LAYER ----------
+        /* ---------------- BASE LAYER ---------------- */
         base_layer {
             label = "BASE";
             bindings = <
-                // Row 1: Q W F P B   /   J L U Y BSPC
-                &kp Q        &kp W        &kp F          &kp P          &kp B
-                &kp J        &kp L        &kp U          &kp Y          &kp BSPC
+                /* Row 1 */
+                &kp Q          &kp W          &kp F          &kp P          &kp B
+                &kp J          &kp L          &kp U          &kp Y          &kp BSPC
 
-                // Row 2: A R S T G   /   M N E I O
-                &kp A        &kp R        &kp S          &kp T          &kp G
-                &kp M        &kp N        &kp E          &kp I          &kp O
+                /* Row 2 */
+                &kp A          &kp R          &kp S          &kp T          &kp G
+                &kp M          &kp N          &kp E          &kp I          &kp O
 
-                // Row 3: Z X C D V   /   K H , . /
-                // Home-row mods (same mods as Mini-ryoku QMK)
-                &mt LGUI Z   &mt LALT X   &mt LCTRL C    &mt LSHIFT D   &mt LCTRL V
-                &kp K        &mt RSHIFT H &mt RCTRL COMMA &mt RALT DOT   &mt RGUI SLASH
+                /* Row 3 (home-row mods) */
+                &mt(LGUI, &kp Z)     &mt(LALT, &kp X)    &mt(LCTRL, &kp C)  &mt(LSHIFT, &kp D) &mt(LCTRL, &kp V)
+                &kp K                &mt(RSHIFT, &kp H)  &mt(RCTRL, &kp COMMA)  &mt(RALT, &kp DOT) &mt(RGUI, &kp SLASH)
 
-                // Thumbs: [Space] [Tab/Fn] / [Enter] [OSL Sym]
-                &kp SPACE    &lt L_FUN TAB
-                &kp ENTER    &sl L_SYM
+                /* Thumbs */
+                &kp SPACE        &lt(L_FUN, &kp TAB)
+                &kp ENTER        &sl(L_SYM)
             >;
         };
 
-        // ---------- FUNCTION / MOUSE / MEDIA LAYER ----------
+        /* ---------------- FUNCTION / MOUSE ---------------- */
         fun_layer {
             label = "FUN";
             bindings = <
-                // ,-------------------------------------------------.    ,--------------------------------------.
-                // |     | F4 | F5 | F6 | F9 |     | F12 | WH_D | MS_U | WH_U | VOL+ |
-                &trans      &kp F4       &kp F5       &kp F6       &kp F9
-                &kp F12     &msc SCRL_DOWN &mmv MOVE_UP &msc SCRL_UP &kp C_VOL_UP
+                /* Row 1 */
+                &trans        &kp F4       &kp F5       &kp F6       &kp F9
+                &kp F12       &msc(SCROLL_DOWN)  &mmv(MOVE_UP)   &msc(SCROLL_UP) &kp C_VOL_UP
 
-                // |     | Mid | R   | L   | F8 |     | F11 | MS_L | MS_D | MS_R | VOL- |
-                &trans      &mkp MCLK    &mkp RCLK    &mkp LCLK    &kp F8
-                &kp F11     &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &kp C_VOL_DOWN
+                /* Row 2 */
+                &trans        &mkp(MCLK)   &mkp(RCLK)   &mkp(LCLK)   &kp F8
+                &kp F11       &mmv(MOVE_LEFT)  &mmv(MOVE_DOWN) &mmv(MOVE_RIGHT) &kp C_VOL_DOWN
 
-                // | LGUI | F1 | F2 | F3 | F7 |     | F10 | Prev | Play | Next | Mute |
-                &kp LGUI    &mt LALT F1  &mt LCTRL F2 &mt LSHIFT F3 &kp F7
-                &kp F10     &mt RSHIFT C_PREV &mt RCTRL C_PLAY &mt RALT C_NEXT &mt RGUI C_MUTE
+                /* Row 3 */
+                &kp LGUI      &mt(LALT, &kp F1)   &mt(LCTRL, &kp F2)  &mt(LSHIFT, &kp F3)  &kp F7
+                &kp F10       &mt(RSHIFT, &kp C_PREV) &mt(RCTRL, &kp C_PLAY) &mt(RALT, &kp C_NEXT) &mt(RGUI, &kp C_MUTE)
 
-                // bottom thumbs unused on Fun layer
-                &trans      &trans
-                &trans      &trans
+                /* Thumbs (unused) */
+                &trans &trans
+                &trans &trans
             >;
         };
 
-        // ---------- SYMBOLS / NUMBERS / NAV LAYER ----------
+        /* ---------------- SYMBOLS / NAV ---------------- */
         sym_layer {
             label = "SYM";
             bindings = <
-                // [ { | 5 % | 6 ^ | 7 & | ] }   /   PgUp Home Up End BSPC
-                &kp LBRC    &kp N5        &kp N6        &kp N7        &kp RBRC
-                &kp PG_UP   &kp HOME      &kp UP        &kp END       &kp BSPC
+                /* Row 1 */
+                &kp LBRC    &kp N5     &kp N6      &kp N7      &kp RBRC
+                &kp PG_UP   &kp HOME   &kp UP      &kp END     &kp BSPC
 
-                // ; : | 9 ( | 0 ) | 1 ! | = + / PrtSc Left Down Right Del
-                &kp SEMICOLON &kp N9      &kp N0       &kp N1        &kp EQUAL
-                &kp PSCRN   &kp LEFT      &kp DOWN     &kp RIGHT    &kp DEL
+                /* Row 2 */
+                &kp SEMICOLON   &kp N9      &kp N0      &kp N1      &kp EQUAL
+                &kp PSCRN       &kp LEFT    &kp DOWN    &kp RIGHT   &kp DEL
 
-                // ` ~ | 2 @ | 3 # | 4 $ | \ | / PgDn Shift Ctrl Alt Gui
-                &mt LGUI GRAVE &mt LALT N2 &mt LCTRL N3 &mt LSHIFT N4 &kp BACKSLASH
-                &kp PG_DN   &kp RSHIFT    &kp RCTRL     &kp RALT     &kp RGUI
+                /* Row 3 */
+                &mt(LGUI, &kp GRAVE)   &mt(LALT, &kp N2)   &mt(LCTRL, &kp N3)  &mt(LSHIFT, &kp N4) &kp BACKSLASH
+                &kp PG_DN             &kp RSHIFT          &kp RCTRL          &kp RALT             &kp RGUI
 
-                // thumbs: Space | 8 * / Enter | (blank)
-                &kp SPACE   &kp N8
-                &kp ENTER   &trans
+                /* Thumbs */
+                &kp SPACE     &kp N8
+                &kp ENTER     &trans
             >;
         };
     };
 
-    // ---------- COMBOS ----------
+    /* ---------------- COMBOS ---------------- */
     combos {
         compatible = "zmk,combos";
 
-        // NOTE: key-positions numbers depend on the physical key order
-        // in the "bindings" list above. You will need to adjust them
-        // once and then they work for all layers.
-        //
-        // The order is left-to-right, top-to-bottom, e.g.:
-        //  0: Q, 1: W, 2: F, 3: P, 4: B, 5: J, 6: L, ...
-
-        // WF -> Esc
         combo_wf_esc {
             timeout-ms = <25>;
-            key-positions = <1 2>;      // W, F  (adjust if needed)
+            key-positions = <1 2>;
             bindings = <&kp ESC>;
         };
 
-        // FP -> !
         combo_fp_bang {
             timeout-ms = <25>;
-            key-positions = <2 3>;      // F, P
+            key-positions = <2 3>;
             bindings = <&kp EXCL>;
         };
 
-        // LU -> -
         combo_lu_minus {
             timeout-ms = <25>;
-            key-positions = <6 7>;      // L, U
+            key-positions = <6 7>;
             bindings = <&kp MINUS>;
         };
 
-        // UY -> '
         combo_uy_quote {
             timeout-ms = <25>;
-            key-positions = <7 8>;      // U, Y
+            key-positions = <7 8>;
             bindings = <&kp SQT>;
         };
 
-        // WFP -> Caps
         combo_wfp_caps {
             timeout-ms = <25>;
-            key-positions = <1 2 3>;    // W, F, P
+            key-positions = <1 2 3>;
             bindings = <&kp CAPS>;
         };
 
-        // NEI -> go to BASE
         combo_nei_home {
             timeout-ms = <25>;
-            key-positions = <16 17 18>; // N, E, I (second half row 2)
-            bindings = <&to L_BASE>;
+            key-positions = <16 17 18>;
+            bindings = <&to(L_BASE)>;
         };
 
-        // H , .  -> go to SYM
         combo_hcp_sym {
             timeout-ms = <25>;
-            key-positions = <21 22 23>; // H, COMMA, DOT (row 3 right)
-            bindings = <&to L_SYM>;
+            key-positions = <21 22 23>;
+            bindings = <&to(L_SYM)>;
         };
 
-        // LUY -> go to FUN
         combo_luy_fun {
             timeout-ms = <25>;
-            key-positions = <6 7 8>;    // L, U, Y
-            bindings = <&to L_FUN>;
+            key-positions = <6 7 8>;
+            bindings = <&to(L_FUN)>;
         };
     };
 };
