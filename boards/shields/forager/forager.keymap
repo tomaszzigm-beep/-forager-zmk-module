@@ -28,11 +28,11 @@
                 &kp M      &kp N      &kp E      &kp I      &kp O
 
                 /* Row 3 (home row mods) */
-                &mt LGUI &kp Z    &mt LALT &kp X    &mt LCTRL &kp C    &mt LSHIFT &kp D    &mt LCTRL &kp V
-                &kp K            &mt RSHIFT &kp H   &mt RCTRL &kp COMMA &mt RALT &kp DOT    &mt RGUI &kp SLASH
+                &mt LGUI Z     &mt LALT X     &mt LCTRL C     &mt LSHIFT D     &mt LCTRL V
+                &kp K          &mt RSHIFT H   &mt RCTRL COMMA &mt RALT DOT     &mt RGUI SLASH
 
                 /* Thumbs */
-                &kp SPACE    &lt L_FUN &kp TAB
+                &kp SPACE    &lt L_FUN TAB
                 &kp ENTER    &sl L_SYM
             >;
         };
@@ -41,14 +41,14 @@
         fun_layer {
             label = "FUN";
             bindings = <
-                &trans      &kp F4         &kp F5         &kp F6         &kp F9
-                &kp F12     &msc SCROLL_DOWN &mmv MOVE_UP   &msc SCROLL_UP &kp C_VOL_UP
+                &trans      &kp F4           &kp F5           &kp F6           &kp F9
+                &kp F12     &msc SCROLL_DOWN &mmv MOVE_UP     &msc SCROLL_UP   &kp C_VOL_UP
 
-                &trans      &mkp MCLK      &mkp RCLK      &mkp LCLK      &kp F8
-                &kp F11     &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &kp C_VOL_DOWN
+                &trans      &mkp MCLK        &mkp RCLK        &mkp LCLK        &kp F8
+                &kp F11     &mmv MOVE_LEFT   &mmv MOVE_DOWN   &mmv MOVE_RIGHT  &kp C_VOL_DOWN
 
-                &kp LGUI    &mt LALT &kp F1   &mt LCTRL &kp F2   &mt LSHIFT &kp F3   &kp F7
-                &kp F10     &mt RSHIFT &kp C_PREV  &mt RCTRL &kp C_PLAY  &mt RALT &kp C_NEXT  &mt RGUI &kp C_MUTE
+                &kp LGUI    &mt LALT F1      &mt LCTRL F2     &mt LSHIFT F3    &kp F7
+                &kp F10     &mt RSHIFT C_PREV &mt RCTRL C_PLAY &mt RALT C_NEXT &mt RGUI C_MUTE
 
                 &trans &trans
                 &trans &trans
@@ -65,8 +65,8 @@
                 &kp SEMICOLON &kp N9     &kp N0     &kp N1     &kp EQUAL
                 &kp PSCRN     &kp LEFT   &kp DOWN   &kp RIGHT  &kp DEL
 
-                &mt LGUI &kp GRAVE   &mt LALT &kp N2   &mt LCTRL &kp N3   &mt LSHIFT &kp N4   &kp BACKSLASH
-                &kp PG_DN         &kp RSHIFT      &kp RCTRL       &kp RALT       &kp RGUI
+                &mt LGUI GRAVE   &mt LALT N2   &mt LCTRL N3   &mt LSHIFT N4   &kp BACKSLASH
+                &kp PG_DN        &kp RSHIFT    &kp RCTRL      &kp RALT        &kp RGUI
 
                 &kp SPACE   &kp N8
                 &kp ENTER   &trans
